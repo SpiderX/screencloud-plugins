@@ -113,7 +113,7 @@ class SFTPUploader():
 				return False
 		else:
 			try:
-				private_key = paramiko.RSAKey.from_private_key_file(self.keyfile, password=self.passphrase)
+				private_key = paramiko.ECDSAKey.from_private_key_file(self.keyfile, password=self.passphrase)
 				transport.connect(username=self.username, pkey=private_key)
 			except paramiko.AuthenticationException:
 				ScreenCloud.setError("Authentication failed (key)")
